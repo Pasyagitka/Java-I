@@ -5,6 +5,7 @@ import by.zinovich.three.tv.tvdirector.Director;
 import by.zinovich.three.tv.tvdirector.Programs;
 
 import java.util.logging.Logger;
+import parse.JSONSerialize;
 
 public class Main {
     private static final Logger logger = Logger.getLogger(Main.class.getName());
@@ -22,23 +23,27 @@ public class Main {
             TVProgram tp6 = new News("Вести недели", 15);
             logger.info("Adding instances to program list");
             TVProgram tp7 = new News("*27*94", -100);
-            TodaysProgram.programList.add(tp1);
-            TodaysProgram.programList.add(tp2);
-            TodaysProgram.programList.add(tp3);
-            TodaysProgram.programList.add(tp4);
-            TodaysProgram.programList.add(tp5);
-            TodaysProgram.programList.add(tp6);
+            TodaysProgram program1 = new TodaysProgram();
+            program1.programList.add(tp1);
+            program1.programList.add(tp2);
+            program1.programList.add(tp3);
+            program1.programList.add(tp4);
+            program1.programList.add(tp5);
+            program1.programList.add(tp6);
             logger.info("FindLongestProgram");
-            System.out.println(programDirector.FindLongestProgram().toString());
+            System.out.println(programDirector.FindLongestProgram(program1).toString());
             logger.info("ProgramTableDuration");
-            System.out.println("Длительность всей программы: " + programDirector.ProgramTableDuration() + " минут");
-            programDirector.SortProgramTable();
+            System.out.println("Длительность всей программы: " + programDirector.ProgramTableDuration(program1) + " минут");
+            programDirector.SortProgramTable(program1);
             logger.info("SortProgramTable");
-            System.out.println(TodaysProgram.programList.toString());
+            System.out.println(program1.programList.toString());
             logger.info("SearchProgramByType(Programs.News)");
-            System.out.println("Новости: " + programDirector.SearchProgramByType(Programs.News));
+            System.out.println("Новости: " + programDirector.SearchProgramByType(program1, Programs.News));
 
-
+            program1.jsonSerialize();
+            TodaysProgram program2 = TodaysProgram.jsonDeserialize();
+            System.out.println("program2:");
+            System.out.println(program2.programList);
         }
         catch (Exception e) {
             logger.warning("Exception was thrown");

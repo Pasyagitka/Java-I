@@ -1,12 +1,11 @@
 package by.zinovich.three.tv.tvdirector;
 
 import by.zinovich.three.tv.programs.TVProgram;
+import by.zinovich.three.tv.programs.TodaysProgram;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static by.zinovich.three.tv.programs.TodaysProgram.programList;
 
 
 public class Director implements IDirector {
@@ -17,20 +16,20 @@ public class Director implements IDirector {
     }
 
     @Override
-    public TVProgram FindLongestProgram() {
-        return programList.stream().sorted(Comparator.comparingInt(TVProgram::getLengthIMinutes).reversed()).findFirst().get();
+    public TVProgram FindLongestProgram(TodaysProgram TP) {
+        return TP.programList.stream().sorted(Comparator.comparingInt(TVProgram::getLengthIMinutes).reversed()).findFirst().get();
     }
     @Override
-    public List<TVProgram> SearchProgramByType(Programs programtype) {
-        return programList.stream().filter((p)-> p.ProgramType == programtype).collect(Collectors.toList());
+    public List<TVProgram> SearchProgramByType(TodaysProgram TP, Programs programtype) {
+        return TP.programList.stream().filter((p)-> p.ProgramType == programtype).collect(Collectors.toList());
     }
     @Override
-    public int ProgramTableDuration() {
-        return programList.stream().mapToInt(TVProgram::getLengthIMinutes).sum();
+    public int ProgramTableDuration(TodaysProgram TP) {
+        return TP.programList.stream().mapToInt(TVProgram::getLengthIMinutes).sum();
     }
     @Override
-    public void SortProgramTable() {
-        programList.sort(Comparator.comparingInt(TVProgram::getLengthIMinutes));
+    public void SortProgramTable(TodaysProgram TP) {
+        TP.programList.sort(Comparator.comparingInt(TVProgram::getLengthIMinutes));
     }
 
     public class WorkerInfo {

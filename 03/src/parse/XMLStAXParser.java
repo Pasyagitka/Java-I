@@ -44,6 +44,7 @@ public class XMLStAXParser {
                 System.out.println(
                         program.toString());
             }
+
         }
         catch (Exception e) {
             System.out.println("Document is not valid!\n" + e.getMessage());
