@@ -1,24 +1,17 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-    <xs:element name="programList" type="TodaysProgram"/>
-    <xs:complexType name="TodaysProgram">
-        <xs:sequence>
-            <xs:element type="TVProgram" name="programList" maxOccurs="unbounded" minOccurs="0"/>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:simpleType name="Programs">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="Adds"/>
-            <xs:enumeration value="Cartoons"/>
-            <xs:enumeration value="Films"/>
-            <xs:enumeration value="News"/>
-        </xs:restriction>
-    </xs:simpleType>
-    <xs:complexType name="TVProgram">
-        <xs:sequence>
-            <xs:element name="Name"     type="xs:string"/>
-            <xs:element name="LengthIMinutes"  type="xs:integer"/>
-            <xs:any minOccurs="0"/>
-        </xs:sequence>
-    </xs:complexType>
+    <xs:element name="programList">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="TVProgram" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="Name"/>
+                            <xs:element type="xs:byte" name="LengthIMinutes"/>
+                        </xs:sequence>
+                        <xs:attribute type="xs:string" name="ProgramType" use="optional"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>

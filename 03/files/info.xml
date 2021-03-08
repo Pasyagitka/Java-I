@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<programList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xsi:schemaLocation="xmlSchema.xsd">
-    <TVProgram>
+<programList>
+    <TVProgram ProgramType="News">
         <Name>Вечер с Соловьём Владимировым</Name>
         <LengthIMinutes>15</LengthIMinutes>
     </TVProgram>
-    <TVProgram>
+    <TVProgram ProgramType="Adds">
         <Name>Собачий корм</Name>
         <LengthIMinutes>3</LengthIMinutes>
     </TVProgram>
-    <TVProgram>
+    <TVProgram ProgramType="Adds">
         <Name>Кошачий корм "Феникс"</Name>
         <LengthIMinutes>2</LengthIMinutes>
     </TVProgram>
-    <TVProgram>
+    <TVProgram ProgramType="Cartoons">
         <Name>Бубка Гоб</Name>
         <LengthIMinutes>25</LengthIMinutes>
     </TVProgram>
-    <TVProgram>
+    <TVProgram ProgramType="Films">
         <Name>Тектоник</Name>
         <LengthIMinutes>125</LengthIMinutes>
     </TVProgram>
-    <TVProgram>
+    <TVProgram ProgramType="News">
         <Name>Вести недели</Name>
         <LengthIMinutes>15</LengthIMinutes>
     </TVProgram>

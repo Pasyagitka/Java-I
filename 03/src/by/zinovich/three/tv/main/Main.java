@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 public class Main {
     private static final Logger logger = Logger.getLogger(Main.class.getName());
 
-
     public static void main(String[] args) {
         try {
             Director programDirector = new Director(12, "Станислав");
@@ -38,6 +37,8 @@ public class Main {
             System.out.println(TodaysProgram.programList.toString());
             logger.info("SearchProgramByType(Programs.News)");
             System.out.println("Новости: " + programDirector.SearchProgramByType(Programs.News));
+
+
         }
         catch (Exception e) {
             logger.warning("Exception was thrown");

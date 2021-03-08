@@ -1,7 +1,6 @@
 package by.zinovich.three.tv.tvdirector;
 
 import by.zinovich.three.tv.programs.TVProgram;
-import by.zinovich.three.tv.workers.WorkerInfo;
 
 import java.util.Comparator;
 import java.util.List;
@@ -33,4 +32,22 @@ public class Director implements IDirector {
     public void SortProgramTable() {
         programList.sort(Comparator.comparingInt(TVProgram::getLengthIMinutes));
     }
+
+    public class WorkerInfo {
+        public String workerName;
+        private int workerId;
+
+        public WorkerInfo(int workerId, String workerName) {
+            this.setWorkerId(workerId);
+            this.workerName = workerName;
+        }
+
+        public int getWorkerId() {
+            return workerId;
+        }
+        public void setWorkerId(int workerId) {
+            this.workerId = workerId;
+        }
+    }
+
 }
