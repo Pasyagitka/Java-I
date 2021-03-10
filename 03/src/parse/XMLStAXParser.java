@@ -25,9 +25,8 @@ import java.util.List;
 
 public class XMLStAXParser {
     public static void main(String[] args) throws Exception {
-        String xmlFileName = "H:/4 семестр/Java I/03/files/info.xml";
-        String xsdFileName = "H:/4 семестр/Java I/03/files/info.xsd";
-        List<TVProgram> programList = parseXMLfile(xmlFileName);
+        final String xmlFileName = "E:/4 семестр/Java I/03/files/info.xml";
+        final String xsdFileName = "E:/4 семестр/Java I/03/files/info.xsd";
 
         try {
             XMLStreamReader reader = XMLInputFactory.newInstance().createXMLStreamReader(new FileInputStream(xmlFileName));
@@ -38,6 +37,7 @@ public class XMLStAXParser {
 
             //no exception thrown, so valid
             System.out.println("Document is valid");
+            List<TVProgram> programList = parseXMLfile(xmlFileName);
 
             // печатаем в консоль информацию по каждой программе
             for (TVProgram program : programList) {
@@ -57,7 +57,7 @@ public class XMLStAXParser {
         TVProgram program = null;
         XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
         try {
-            // инициализируем reader и скармливаем ему xml файл
+            // инициализируем reader
             XMLEventReader reader = xmlInputFactory.createXMLEventReader(new FileInputStream(fileName));
             // проходим по всем элементам xml файла
             while (reader.hasNext()) {
@@ -83,8 +83,7 @@ public class XMLStAXParser {
                         }
                     }
                 }
-                // если цикл дошел до закрывающего элемента,
-                // то добавляем считанного из файла в список
+                // если цикл дошел до закрывающего элемента, то добавляем считанного из файла в список
                 if (xmlEvent.isEndElement()) {
                     EndElement endElement = xmlEvent.asEndElement();
                     if (endElement.getName().getLocalPart().equals("TVProgram")) {

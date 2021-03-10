@@ -16,7 +16,7 @@ public class TodaysProgram {
 
     public void jsonSerialize() throws IOException {
         Gson gson = new Gson();
-        try (FileWriter writer = new FileWriter("H:/4 семестр/Java I/03/files/TodaysProgram.json")) {
+        try (FileWriter writer = new FileWriter("E:/4 семестр/Java I/03/files/TodaysProgram.json")) {
             gson.toJson(this, writer);
         } catch (IOException e) {
             e.printStackTrace();
@@ -25,7 +25,7 @@ public class TodaysProgram {
 
     public static TodaysProgram jsonDeserialize() throws Exception {
         Gson gson = new Gson();
-        try (Reader reader = new FileReader("H:/4 семестр/Java I/03/files/TodaysProgram.json")) {
+        try (Reader reader = new FileReader("E:/4 семестр/Java I/03/files/TodaysProgram.json")) {
             TodaysProgram programlist = gson.fromJson(reader, TodaysProgram.class);
             return programlist;
         }
