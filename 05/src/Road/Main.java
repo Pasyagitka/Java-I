@@ -26,7 +26,7 @@ public class Main {
         public void run() {
             try {
                 Thread.sleep(500);
-                System.out.println("Автомобили проехали по участку дороги");
+                System.out.println("Автомобили проехали по участку дороги: ");
             } catch (InterruptedException e) {
             }
         }

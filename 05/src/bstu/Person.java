@@ -10,8 +10,8 @@ public class Person extends  Thread{
 
     public Person(String name, Entrance door1, Entrance door2) {
         this.personName = name;
-        int possibility = (int)(Math.random()*100);
-        if(possibility >= 50) {
+        int whichdoor = (int)(Math.random()*100);
+        if(whichdoor >= 50) {
             queue.offer(door1);
             queue.offer(door2);
         }
@@ -33,9 +33,7 @@ public class Person extends  Thread{
             {
                 if (queue.peek().entrance.tryAcquire(maxWaitingTime, TimeUnit.MILLISECONDS))
                 {
-                    //System.out.println("В очереди в " + queue.peek().entranceName + " " + queue.size() + " человек(а)");
                     System.out.println(personName + " --> " + queue.peek().entranceName);
-                    //sleep((int) (Math.random() * 5000));
                     sleep(800);
                     queue.peek().entrance.release();
                     break;
@@ -46,7 +44,7 @@ public class Person extends  Thread{
                 System.out.println(e.getMessage());
             }
             long t2 = System.currentTimeMillis();
-            System.out.println(personName + " (лимит: " + maxWaitingTime + ", прождал: " + (double)(t2 - t1) + ") не дождался своей очереди " + queue.peek().entranceName);
+            System.out.println(personName + ", время "+ (double)(t2 - t1) +"/"+ maxWaitingTime +", покинул очередь в " + queue.peek().entranceName);
             ChangeDoor();
         }
 
