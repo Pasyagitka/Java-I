@@ -1,6 +1,5 @@
 USE Java_Souvenirs;
 
-
 CREATE TABLE Producers(
 	ProducerID nvarchar(50) PRIMARY KEY,
 	Name nvarchar(50) NULL,

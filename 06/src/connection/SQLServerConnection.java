@@ -1,11 +1,13 @@
 package connection;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
+import java.util.Properties;
+import java.util.ResourceBundle;
 
 public class SQLServerConnection implements IConnection {
-    private static final String SERVER = "jdbc:sqlserver://localhost;";
-    private static final String DATABASE = "database=";
-    private static final String SECURITY = "integratedSecurity=true";
 
     public String databaseName;
     public Connection connection;
@@ -16,8 +18,16 @@ public class SQLServerConnection implements IConnection {
 
     public void GetConnection() {
         try {
-            if(this.connection ==null) {//isopened
-                this.connection = DriverManager.getConnection(SERVER + DATABASE + databaseName + ";" + SECURITY);
+            if(this.connection == null) {
+                InputStream input = new FileInputStream("resources/db.properties");
+                Properties prop = new Properties();
+                prop.load(input);
+
+                String server = prop.getProperty("db.server");
+                String security = prop.getProperty("db.security");
+
+                String url = String.format("%s;database=%s;%s", server, databaseName, security);
+                this.connection = DriverManager.getConnection(url);
                 System.out.println("Database " + databaseName + " was successfully connected");
             }
         } catch (Exception e) {
@@ -27,8 +37,8 @@ public class SQLServerConnection implements IConnection {
     }
 
     public void CloseConnection()  {
-        try { //is opened
-            if(this.connection ==null) {
+        try {
+            if(this.connection != null) {
                 this.connection.close();
                 System.out.printf("Disconnected from database %s\n", databaseName);
             }
