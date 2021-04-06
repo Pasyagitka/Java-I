@@ -1,3 +1,4 @@
+package Parm;
 import by.zinovich.three.tv.programs.*;
 import by.zinovich.three.tv.tvdirector.Director;
 import org.junit.Before;

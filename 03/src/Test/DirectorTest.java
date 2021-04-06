@@ -1,11 +1,10 @@
 import by.zinovich.three.tv.programs.*;
 import by.zinovich.three.tv.tvdirector.Director;
 import by.zinovich.three.tv.tvdirector.Programs;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.*;
+import org.junit.jupiter.api.DisplayName;
 
+import java.lang.annotation.Repeatable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -13,7 +12,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+
 
 public class DirectorTest {
     private static Director director;
@@ -22,7 +21,6 @@ public class DirectorTest {
     @BeforeClass
     public static void setUp()   {
         director = new Director(21, "Максим");
-
         try {
             TVProgram tp1 = new News("Вечер с Соловьём Владимировым", 15);
             TVProgram tp2 = new Adds("Собачий корм", 3);
@@ -68,7 +66,7 @@ public class DirectorTest {
     @Ignore("Test undone")
     @Test
     public void sortProgramTable() throws Exception  {
-        System.out.println("sortProgramTable test");
+        Assert.fail("sortProgramTable test");
     }
 
     @AfterClass
@@ -77,4 +75,8 @@ public class DirectorTest {
         System.out.println("@AfterClass");
     }
 
+    @Before
+    public void text() {
+        System.out.println("---------------------------------------------");
+    }
 }

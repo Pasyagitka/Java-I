@@ -18,12 +18,7 @@ class ClientSomthing {
     private String dtime;
     private SimpleDateFormat dt1;
 
-    /**
-     * для создания необходимо принять адрес и номер порта
-     *
-     * @param addr
-     * @param port
-     */
+    /* для создания необходимо принять адрес и номер порта     */
     public ClientSomthing(String addr, int port) {
         this.addr = addr;
         this.port = port;
@@ -49,11 +44,7 @@ class ClientSomthing {
         // в методе run() нити.
     }
 
-    /**
-     * просьба ввести имя,
-     * и отсылка эхо с приветсвием на сервер
-     */
-
+    /* просьба ввести имя, и отсылка эхо с приветсвием на сервер   */
     private void pressNickname() {
         System.out.print("Press your nick: ");
         try {
@@ -65,9 +56,7 @@ class ClientSomthing {
 
     }
 
-    /**
-     * закрытие сокета
-     */
+    /* закрытие сокета */
     private void downService() {
         try {
             if (!socket.isClosed()) {
@@ -121,7 +110,6 @@ class ClientSomthing {
                     out.flush(); // чистим
                 } catch (IOException e) {
                     ClientSomthing.this.downService(); // в случае исключения тоже харакири
-
                 }
 
             }

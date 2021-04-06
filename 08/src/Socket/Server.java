@@ -13,8 +13,6 @@ class ServerSomthing extends Thread {
 
     /**
      * для общения с клиентом необходим сокет (адресные данные)
-     * @param socket
-     * @throws IOException
      */
     public ServerSomthing(Socket socket) throws IOException {
         this.socket = socket;
@@ -57,9 +55,7 @@ class ServerSomthing extends Thread {
         }
     }
 
-    /**
-     * отсылка одного сообщения клиенту по указанному потоку
-     */
+    /*отсылка одного сообщения клиенту по указанному потоку*/
     private void send(String msg) {
         try {
             out.write(msg + "\n");
@@ -91,16 +87,11 @@ class ServerSomthing extends Thread {
  * класс хранящий в ссылочном приватном
  * списке информацию о последних 10 (или меньше) сообщениях
  */
-
 class Story {
 
     private LinkedList<String> story = new LinkedList<>();
 
-    /**
-     * добавить новый элемент в список
-     * @param el
-     */
-
+    /* добавить новый элемент в список */
     public void addStoryEl(String el) {
         // если сообщений больше 10, удаляем первое и добавляем новое
         // иначе просто добавить
@@ -112,11 +103,7 @@ class Story {
         }
     }
 
-    /**
-     * отсылаем последовательно каждое сообщение из списка
-     * в поток вывода данному клиенту (новому подключению)
-     * @param writer
-     */
+    /*отсылаем последовательно каждое сообщение из списка в поток вывода данному клиенту (новому подключению) */
     public void printStory(BufferedWriter writer) {
         if(story.size() > 0) {
             try {
@@ -140,10 +127,6 @@ public class Server {
     // сервера, слушающих каждый своего клиента
     public static Story story; // история переписки
 
-    /**
-     * @param args
-     * @throws IOException
-     */
     public static void main(String[] args) throws IOException {
         ServerSocket server = new ServerSocket(PORT);
         story = new Story();
