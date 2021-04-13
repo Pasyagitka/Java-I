@@ -13,6 +13,7 @@ public class Main {
     public static void main(String[] args) {
         SQLServerConnection Java_Souvenirs = new SQLServerConnection("Java_Souvenirs");
         try {
+
             JAVA_SOUVENIRS_LOGGER.info("Creating new connection");
             Java_Souvenirs.GetConnection();
             JAVA_SOUVENIRS_LOGGER.info("findSouvenirsByProducer()");

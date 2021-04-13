@@ -1,6 +1,8 @@
 package Sock1;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -45,18 +47,15 @@ class Server {
 
     public void onClientMessage(ServerConnectionThread clientThread, String message) {
         System.out.println("Cообщение от (" + clientThread + "): " + message);
-        if (message.startsWith("send:")) {
-            int msgPos = message.indexOf(":",5);
-            int clientIndex = Integer.parseInt(message.substring(5, msgPos));
+        if (message.startsWith("to ")) {
+            int msgPos = message.indexOf(" ",3);
+            int clientIndex = Integer.parseInt(message.substring(3, msgPos));
             clients.get(clientIndex).sendMessage(message.substring(msgPos+1));
         }
     }
 }
 
-
-// класс - поток, который ждет подключения от нового клиента и потом для каждого
-// подключения создает экземпляр ServerConnectionThread
-// создается только один экземпляр ServerConnectionInitThread
+//ждет подключения от нового клиента и потом для каждого подключения создает экземпляр ServerConnectionThread
 class ServerConnectionInitThread extends Thread {
     Server server;
     int port;
@@ -76,6 +75,50 @@ class ServerConnectionInitThread extends Thread {
                 this.server.onClientChange(sst);
                 sst.start();
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+// ждет сообщения от одного клиента
+// для каждого клиентского подключения, создается свой экземпляр ServerConnectionThread
+class ServerConnectionThread extends Thread {
+    boolean connected = true;
+    Socket socket;
+    Server server;
+
+    ServerConnectionThread(Socket socket, Server server) {
+        this.socket = socket;
+        this.server = server;
+    }
+
+    public void run() {
+        System.out.println("Ожидание сообщений от клиента (" + this + ")");
+        while (this.server.alive) {
+            try {
+                String msg = new BufferedReader (new InputStreamReader (socket.getInputStream())).readLine();
+                if (msg != null) {
+                    server.onClientMessage(this, msg);
+                }
+            } catch (IOException e) {
+                server.clients.remove(this);
+                this.connected = false;
+                this.server.onClientChange(this);
+                return;
+            }
+        }
+    }
+
+    public String toString() {
+        return "Клиент: " + this.socket.getInetAddress().toString() + " порт:" +this.socket.getPort() + " подключен:" + this.connected;
+    }
+
+    public void sendMessage(String message) {
+        try {
+            PrintStream ps = new PrintStream(this.socket.getOutputStream());
+            ps.println(message);
+            ps.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -4,21 +4,18 @@ import java.net.*;
 import java.util.*;
 
 public class QuoteServer {
-    private DatagramSocket socket;
+    private DatagramSocket datagramSocket;
     private List<String> listQuotes = new ArrayList<String>();
     private Random random;
 
     public QuoteServer(int port) throws SocketException {
-        socket = new DatagramSocket(port);
+        datagramSocket = new DatagramSocket(port);
         random = new Random();
     }
 
     public static void main(String[] args) {
-        String _quoteFile= "Messages.txt";
-        int _port = 17;
-
-        String quoteFile = _quoteFile;
-        int port = _port;
+        String quoteFile = "Messages.txt";
+        int port = 17;
 
         try {
             QuoteServer server = new QuoteServer(port);
@@ -34,16 +31,15 @@ public class QuoteServer {
     private void service() throws IOException {
         while (true) {
             DatagramPacket request = new DatagramPacket(new byte[1], 1);
-            socket.receive(request);
+            datagramSocket.receive(request);
 
-            String quote = getRandomQuote();
-            byte[] buffer = quote.getBytes();
+            byte[] buffer = getRandomQuote().getBytes();
 
             InetAddress clientAddress = request.getAddress();
             int clientPort = request.getPort();
 
             DatagramPacket response = new DatagramPacket(buffer, buffer.length, clientAddress, clientPort);
-            socket.send(response);
+            datagramSocket.send(response);
         }
     }
 

@@ -5,12 +5,9 @@ import java.net.*;
 //https://www.codejava.net/java-se/networking/java-udp-client-server-program-example
 public class QuoteClient {
     public static void main(String[] args) {
-        String _hostname= "localhost";
-        int _port = 17;
 
-        String hostname = _hostname;
-        int port = _port;
-
+        String hostname = "localhost";
+        int port = 17;
         try {
             InetAddress address = InetAddress.getByName(hostname);
             DatagramSocket socket = new DatagramSocket();
@@ -23,9 +20,7 @@ public class QuoteClient {
                 DatagramPacket response = new DatagramPacket(buffer, buffer.length);
                 socket.receive(response);
 
-                String quote = new String(buffer, 0, response.getLength());
-
-                System.out.println(quote);
+                System.out.println(new String(buffer, 0, response.getLength()));
                 Thread.sleep(5000);
             }
 
