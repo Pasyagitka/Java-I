@@ -1,0 +1,3 @@
+db.server =  jdbc:sqlserver://localhost;
+db.security = integratedSecurity=true;
+db.databaseName = database=LoginJava9;
