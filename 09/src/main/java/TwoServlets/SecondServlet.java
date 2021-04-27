@@ -10,7 +10,6 @@ import java.io.PrintWriter;
 public class SecondServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
         request.setAttribute ("param", "Second servlet GET:");
         request.getRequestDispatcher("forward.jsp").forward(request, response);
     }
