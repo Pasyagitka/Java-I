@@ -25,7 +25,7 @@ public class SQLServerConnection {
     public void getConnection() {
         try {
             if(this.connection == null) {
-                FileReader input=new FileReader ("E:\\4 семестр\\Java I\\09\\resources\\db.propetries");
+                FileReader input=new FileReader ("D:\\4 семестр\\Java I\\09\\resources\\db.propetries");
                 Properties prop = new Properties();
                 prop.load(input);
 

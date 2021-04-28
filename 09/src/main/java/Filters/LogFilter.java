@@ -17,7 +17,7 @@ public class LogFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
-        FileWriter fileWriter = new FileWriter("E:\\4 семестр\\Java I\\09\\resources\\Log.txt", true);
+        FileWriter fileWriter = new FileWriter("D:\\4 семестр\\Java I\\09\\resources\\Log.txt", true);
         HttpServletRequest req = (HttpServletRequest) request;
         fileWriter.write(req.getMethod() + " - " + LocalDateTime.now() + " - " + ((HttpServletRequest) request).getServletPath() + "\r\n");
         fileWriter.flush();
