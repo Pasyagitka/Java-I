@@ -2,7 +2,7 @@ package pasyagitka.servlets;
 
 
 import org.apache.log4j.Logger;
-import pasyagitka.Model.Record;
+import pasyagitka.model.Record;
 import pasyagitka.database.DatabaseConnection;
 
 import javax.servlet.ServletException;

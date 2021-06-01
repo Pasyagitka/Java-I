@@ -1,7 +1,7 @@
 package pasyagitka.servlets;
 
 import pasyagitka.database.DatabaseConnection;
-import pasyagitka.Model.CurrentUser;
+import pasyagitka.model.CurrentUser;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

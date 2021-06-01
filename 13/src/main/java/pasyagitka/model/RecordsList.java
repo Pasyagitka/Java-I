@@ -1,4 +1,4 @@
-package pasyagitka.Model;
+package pasyagitka.model;
 
 import java.util.ArrayList;
 import java.util.List;

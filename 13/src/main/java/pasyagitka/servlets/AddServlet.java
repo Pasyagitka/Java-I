@@ -1,6 +1,6 @@
 package pasyagitka.servlets;
 
-import pasyagitka.Model.Record;
+import pasyagitka.model.Record;
 import pasyagitka.database.DatabaseConnection;
 import org.apache.log4j.Logger;
 
@@ -15,8 +15,9 @@ import java.util.List;
 @WebServlet(name = "addServlet", value = "/add-servlet")
 public class AddServlet extends HttpServlet {
     private final static Logger logger = Logger.getLogger(AddServlet.class);
+
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DatabaseConnection servletServer = DatabaseConnection.getInstance();
         servletServer.addRecordsToDB(request.getParameter("name"),
                 Long.parseLong(request.getParameter("phonenumber")),

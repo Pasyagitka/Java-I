@@ -1,6 +1,6 @@
-package pasyagitka.controller.message;
+package pasyagitka.controller;
 
-public final class GoToPage {
+public final class GoToPageConstants {
     public static final String REDIRECT_ERROR_PAGE = "controller?command=go_to_error_page";
 
     public static final String FORWARD_MAIN_PAGE = "welcome.jsp";

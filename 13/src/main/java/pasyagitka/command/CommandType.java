@@ -1,10 +1,11 @@
-package pasyagitka.controller.command;
+package pasyagitka.command;
 
-public  enum CommandName {
-    ADD_PRODUCT,
-    EDIT_PRODUCT,
+public  enum CommandType {
     LOGIN,
     REGISTER,
+
+    ADD_PRODUCT,
+    EDIT_PRODUCT,
 
     GO_TO_EDIT_PAGE,
     GO_TO_ERROR_PAGE,

@@ -1,13 +1,13 @@
-package pasyagitka.controller.command.implementation;
+package pasyagitka.command.commands;
 
-import pasyagitka.controller.command.Command;
+import pasyagitka.command.Command;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class AddProduct implements Command {
+public class RegisterCommand implements Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

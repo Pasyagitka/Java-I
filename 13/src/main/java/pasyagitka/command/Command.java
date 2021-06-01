@@ -1,4 +1,4 @@
-package pasyagitka.controller.command;
+package pasyagitka.command;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

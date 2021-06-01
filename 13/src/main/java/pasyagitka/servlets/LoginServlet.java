@@ -1,8 +1,8 @@
 package pasyagitka.servlets;
 
-import pasyagitka.Model.Record;
+import pasyagitka.model.Record;
 import pasyagitka.database.DatabaseConnection;
-import pasyagitka.Model.CurrentUser;
+import pasyagitka.model.CurrentUser;
 import org.apache.log4j.Logger;
 
 import javax.servlet.*;
@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         DatabaseConnection servletServer = DatabaseConnection.getInstance();
         String login = request.getParameter("login");
         String password = request.getParameter("password");

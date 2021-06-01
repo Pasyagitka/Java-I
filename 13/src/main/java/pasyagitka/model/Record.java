@@ -1,4 +1,4 @@
-package pasyagitka.Model;
+package pasyagitka.model;
 
 public class Record {
     public String name;

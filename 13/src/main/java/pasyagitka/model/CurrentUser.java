@@ -1,4 +1,4 @@
-package pasyagitka.Model;
+package pasyagitka.model;
 
 public class CurrentUser {
     private static CurrentUser instance;
@@ -9,6 +9,9 @@ public class CurrentUser {
     public void setCurrentUser(String username)
     {
         this.username = username;
+    }
+    public String getUsername() {
+        return username;
     }
 
     public static synchronized CurrentUser getInstance()

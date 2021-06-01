@@ -1,9 +1,8 @@
 package pasyagitka.controller;
 
 import org.apache.log4j.Logger;
-import pasyagitka.controller.command.Command;
-import pasyagitka.controller.command.CommandProvider;
-import pasyagitka.controller.message.GoToPage;
+import pasyagitka.command.Command;
+import pasyagitka.command.CommandProvider;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -66,7 +65,7 @@ public class Controller extends HttpServlet {
             command.execute(request, response);
         } else {
             logger.info("No command parameter");
-            response.sendRedirect(GoToPage.REDIRECT_ERROR_PAGE);
+            response.sendRedirect(GoToPageConstants.REDIRECT_ERROR_PAGE);
         }
     }
 }
