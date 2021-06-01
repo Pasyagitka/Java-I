@@ -1,7 +1,7 @@
 package pasyagitka.database;
 
-import pasyagitka.RecordsList.Record;
-import pasyagitka.RecordsList.RecordsList;
+import pasyagitka.Model.Record;
+import pasyagitka.Model.RecordsList;
 
 import java.sql.*;
 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib version="2.0"
+        xmlns="http://java.sun.com/xml/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>2.0</jsp-version>
+    <short-name>tags</short-name>
+    <uri>https://malinka.by</uri>
+
+    <tag>
+        <name>ZeiSubmit</name>
+        <tag-class>meow.pasyagitka.ZeiSubmit</tag-class>
+    </tag>
+
+    <tag>
+        <name>ZeiPrintTable</name>
+        <tag-class>meow.pasyagitka.ZeiPrintTable</tag-class>
+        <body-content>JSP</body-content>
+
+        <attribute>
+            <name>tableName</name>
+        </attribute>
+    </tag>
+</taglib>

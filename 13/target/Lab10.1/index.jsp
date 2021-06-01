@@ -14,6 +14,9 @@
     <title>Login</title>
 </head>
 <body>
+<c:redirect url="Controller?command=go_to_main_page"/>
+
+<%--
 <div id="login">
     <form id="login_form" method="post" action="logging-servlet">
         <div class="field_container">
@@ -33,5 +36,6 @@
     </form>
     </div>
 </div>
+--%>
 </body>
 </html>
